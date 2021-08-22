@@ -1,3 +1,9 @@
+++ mask detection train
+https://www.kaggle.com/andrewmvd/face-mask-detection
+https://www.kaggle.com/daniel601/pytorch-fasterrcnn
+: 마스크 안쓴 얼굴은 인식 못하는 것 같다.
+
+
 https://flask-restful.readthedocs.io/en/latest/quickstart.html#a-minimal-api
 
 python flask_pytorch_test.py --host 0.0.0.0
@@ -17,4 +23,9 @@ set FLASK_ENV=development
 set FLASK_APP=app.py
 flask run
 
+
+set FLASK_ENV=development
+set FLASK_APP=app_mask.py
+flask run
+python test_send.py
 
