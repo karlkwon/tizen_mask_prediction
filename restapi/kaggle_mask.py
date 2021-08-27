@@ -5,7 +5,8 @@ from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from PIL import Image
 
 
-device = torch.device('cpu')
+# device = torch.device('cpu')
+device = torch.device('cuda')
 
 class MaskDataset(object):
     def __init__(self, transforms, file):
@@ -17,6 +18,8 @@ class MaskDataset(object):
         
         if self.transforms is not None:
             img = self.transforms(img)
+
+        img = img.to(device)
 
         return img, None
 
@@ -49,9 +52,9 @@ def get_model_instance_segmentation(num_classes):
 
 # model_path: E:\\DATA\\[promakers] mask\\model.pt
 def load_model(model_path):
-    model2 = get_model_instance_segmentation(3)
+    model2 = get_model_instance_segmentation(4)
     
-    model2.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
+    model2.load_state_dict(torch.load(model_path, map_location=device))
     model2.eval()
     model2.to(device)
 
@@ -59,9 +62,9 @@ def load_model(model_path):
 
 
 if __name__=='__main__':
-    model2 = get_model_instance_segmentation(3)
+    model2 = get_model_instance_segmentation(4)
     
-    model2.load_state_dict(torch.load('E:\\DATA\\[promakers] mask\\model.pt', map_location=torch.device('cpu')))
+    model2.load_state_dict(torch.load('E:\\DATA\\[promakers] mask\\model.pt', map_location=device))
     model2.eval()
     model2.to(device)
 
