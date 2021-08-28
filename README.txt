@@ -19,6 +19,9 @@ https://pytorch.org/tutorials/intermediate/flask_rest_api_tutorial.html
 
 pip install Flask==2.0.1 torchvision==0.10.0
 
+[PC TEST]
+curl -v -X POST -F file=@"E:\DATA\[promakers] mask\archive\images\maksssksksss48.png" http://211.250.175.87:5100/predict
+
 set FLASK_ENV=development
 set FLASK_APP=app.py
 flask run
@@ -26,6 +29,9 @@ flask run
 [linux]
 export FLASK_ENV=development
 export FLASK_APP=app_mask.py
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
 flask run --host 0.0.0.0
 python test_send.py
 
@@ -34,4 +40,5 @@ set FLASK_ENV=development
 set FLASK_APP=app_mask.py
 flask run --host 0.0.0.0
 python test_send.py
+
 
